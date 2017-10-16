@@ -7,14 +7,14 @@ class TempSensor():
 		self.i2cBus       = smbus.SMBus(1)
 
 
-	def readTemp():
+	def readTemp(self):
 		print('Reading temperature value:  ')
 		self.i2cBus.write_byte(self.tempSensAddr, self.tempSensAddr & 0xFE)
 		self.i2cBus.write_byte(self.tempSensAddr, 0x05)
 		self.i2cBus.write_byte(self.tempSensAddr, self.tempSensAddr & 0x01)
 		pass
 
-	def decodeTemp(upperByte, lowerByte):
+	def decodeTemp(self, upperByte, lowerByte):
 		pass
 
 
