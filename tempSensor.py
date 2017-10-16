@@ -9,9 +9,9 @@ class TempSensor():
 
 	def readTemp(self):
 		print('Reading temperature value:  ')
-		self.i2cBus.write_byte(self.tempSensAddr, self.tempSensAddr & 0xFE)
-		self.i2cBus.write_byte(self.tempSensAddr, 0x05)
-		self.i2cBus.write_byte(self.tempSensAddr, self.tempSensAddr & 0x01)
+		self.i2cBus.write_i2c_block_data(self.tempSensAddr, self.tempSensAddr & 0xFE,0x00)
+		self.i2cBus.write_i2c_block_data(self.tempSensAddr, 0x05, 0x00)
+		self.i2cBus.write_i2c_block_data(self.tempSensAddr, self.tempSensAddr & 0x01,0x00)
 		pass
 
 	def decodeTemp(self, upperByte, lowerByte):
